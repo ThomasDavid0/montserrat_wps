@@ -40,7 +40,7 @@ def offset_stack(h_wind, depth, hmin, stack):
 
 
 def create_mission(missionxyz: Point, outfile:str):
-    mission = SUMMIT.offset(missionxyz)
+    mission = GPS.full(SUMMIT, len(missionxyz)).offset(missionxyz)
     
     with open(outfile, "w") as f:
         f.write("QGC WPL 110\n")
@@ -54,7 +54,7 @@ def create_mission(missionxyz: Point, outfile:str):
     
 
 if __name__ == "__main__":
-    from wps_plot import plot_wpxys
+#    from wps_plot import plot_wpxys
     stack = create_stack(3, 2000, 250, 150, 100)
     stack2 = create_stack(3, 2000, 250, 150, -100)
     offset_stack1 = offset_stack(90, 2200, 450, stack)
